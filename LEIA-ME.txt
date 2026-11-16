@@ -1,0 +1,32 @@
+CHECKLIST DE EMPILHADEIRA — VERSÃO INDIVIDUAL 2.4
+
+DISTRIBUIÇÃO
+- Um mesmo aplicativo pode ser instalado pela equipe em celulares Android e iPhone.
+- Cada aparelho mantém seu próprio histórico local.
+- Não há banco central, conta de usuário, painel de supervisor ou envio automático de dados.
+- O compartilhamento de registros é manual, por exportação/backup.
+
+FUNCIONALIDADES PRESERVADAS DA VERSÃO APROVADA
+- Foto/modelo original incorporado.
+- Marcações padrão C nos componentes e perguntas.
+- Data automática.
+- Campos de identificação e observações.
+- Exportação do checklist em imagem.
+- Histórico local no aparelho.
+- Backup e restauração por arquivo JSON.
+- Cache para uso offline depois do primeiro acesso online.
+
+INSTALAÇÃO PARA A EQUIPE
+1. Hospede o conteúdo desta pasta em um endereço HTTPS.
+2. Envie o mesmo link para todos.
+3. iPhone: abrir no Safari > Compartilhar > Adicionar à Tela de Início.
+4. Android: abrir no Chrome > menu > Instalar aplicativo (ou Adicionar à tela inicial).
+5. Abra uma vez com internet para carregar os arquivos; depois o app pode ser usado offline.
+
+ATENÇÃO AOS DADOS
+O histórico é armazenado no próprio navegador/aplicativo de cada celular. Limpar os dados do navegador, desinstalar o app ou trocar de aparelho pode apagar o histórico local. Faça backups JSON regularmente e guarde-os em local seguro.
+O arquivo de backup pode ser compartilhado manualmente com outro aparelho, mas não existe sincronização automática.
+
+LIMITAÇÃO ATUAL
+Este pacote está preparado para instalação como PWA por HTTPS. Não é um APK/IPA assinado e ainda não foi publicado na Google Play ou App Store.
+Para gerar e assinar aplicativos nativos, será necessário ambiente de desenvolvimento: Android Studio/SDK para Android e macOS com Xcode para iOS.
