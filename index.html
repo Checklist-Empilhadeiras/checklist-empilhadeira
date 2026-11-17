@@ -309,4 +309,16 @@ function setTodayIfEmpty(){if(!$("date").value)$("date").value=new Date().toLoca
 image.onload=()=>{setTodayIfEmpty();render()};setTodayIfEmpty();
 if("serviceWorker" in navigator && location.protocol.startsWith("http"))window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://zejmtrlmutclmcbaznxe.supabase.co";
+
+const SUPABASE_KEY = "sb_publishable_zthjWquev7MIEsvEF_HANw_SxjYkwdT";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+</script>
 </body></html>
