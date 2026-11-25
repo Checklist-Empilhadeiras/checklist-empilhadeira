@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#142331">
+<meta name="theme-color" content="#071d32">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Checklist Empilhadeira">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Checklist de Empilhadeira</title>
+<title>Checklist de Empilhadeiras</title>
 <style>
 :root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#17232d;background:#f1f4f7}
 *{box-sizing:border-box}body{margin:0;padding-bottom:env(safe-area-inset-bottom)}header{background:#142331;color:#fff;padding:17px 16px 14px;position:sticky;top:0;z-index:3}
@@ -69,10 +69,23 @@ canvas{display:block;margin:0 auto;max-width:680px;border-radius:4px;image-rende
 .record{border-color:#e0e7ee;background:#fff}
 .modal-card{box-shadow:0 18px 60px #08152244}
 @media(max-width:480px){main{padding:11px;gap:11px}.panel{padding:13px}header{padding:15px 14px 13px}nav{padding:9px 10px;gap:6px}nav button{font-size:12.5px}}
+
+/* Novo cabeçalho aprovado: empilhadeira vermelha, azul-marinho e detalhes vermelhos. */
+header.hero-header{position:relative;top:auto;z-index:3;min-height:228px;padding:0 18px;display:flex;align-items:center;overflow:hidden;border-radius:0 0 18px 18px;background:#071d32 url("hero-empilhadeira-vermelha.jpg") center right/cover no-repeat;box-shadow:0 4px 16px #071d3226}
+header.hero-header:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,25,46,.98) 0%,rgba(5,25,46,.91) 37%,rgba(5,25,46,.24) 72%,rgba(5,25,46,.04) 100%);pointer-events:none}
+header.hero-header .top{position:relative;z-index:1;width:100%;max-width:980px;margin:0 auto;display:block}
+.hero-copy{max-width:56%;padding:20px 0 18px}
+header.hero-header .hero-icon{display:inline-flex;width:42px;height:42px;align-items:center;justify-content:center;border:2px solid #fff;border-radius:10px;color:#fff;font-size:30px;font-weight:800;line-height:1;margin-bottom:9px}
+header.hero-header h1{font-size:clamp(23px,4.4vw,36px);line-height:1.08;letter-spacing:-.035em;color:#fff;font-weight:800;text-shadow:0 2px 8px #0005}
+header.hero-header .hero-rule{display:block;width:150px;height:6px;margin:13px 0 10px;border-radius:8px;background:#ef2935}
+header.hero-header p{font-size:clamp(11px,1.7vw,14px);line-height:1.35;color:#f0f4f8;margin:0;text-shadow:0 1px 5px #0008}
+nav{top:0;z-index:4}
+@media(max-width:560px){header.hero-header{min-height:190px;padding:0 14px;background-position:58% center}header.hero-header:after{background:linear-gradient(90deg,rgba(5,25,46,.98) 0%,rgba(5,25,46,.9) 45%,rgba(5,25,46,.32) 100%)}.hero-copy{max-width:68%;padding:16px 0}header.hero-header .hero-icon{width:34px;height:34px;font-size:24px;margin-bottom:7px}header.hero-header h1{font-size:24px}header.hero-header .hero-rule{width:112px;height:5px;margin:10px 0 8px}header.hero-header p{font-size:11px}}
+
 </style>
 </head>
 <body>
-<header><div class="top"><span style="font-size:25px">✓</span><div><h1>Checklist de Empilhadeira</h1><p>Inspeção visual diária · funcionamento offline</p></div></div></header>
+<header class="hero-header"><div class="top"><div class="hero-copy"><span class="hero-icon" aria-hidden="true">✓</span><h1>Checklist de Empilhadeiras</h1><span class="hero-rule"></span><p>Inspeção visual diária · funcionamento offline</p></div></div></header>
 <nav>
 <button class="active" data-tab="form">Nova inspeção</button>
 <button data-tab="history">Histórico</button>
