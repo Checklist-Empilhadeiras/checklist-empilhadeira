@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#142331">
+<meta name="theme-color" content="#071d32">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Checklist Empilhadeira">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Checklist de Empilhadeira</title>
+<title>Checklist de Empilhadeiras</title>
 <style>
 :root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#17232d;background:#f1f4f7}
 *{box-sizing:border-box}body{margin:0;padding-bottom:env(safe-area-inset-bottom)}header{background:#142331;color:#fff;padding:17px 16px 14px;position:sticky;top:0;z-index:3}
@@ -69,10 +69,23 @@ canvas{display:block;margin:0 auto;max-width:680px;border-radius:4px;image-rende
 .record{border-color:#e0e7ee;background:#fff}
 .modal-card{box-shadow:0 18px 60px #08152244}
 @media(max-width:480px){main{padding:11px;gap:11px}.panel{padding:13px}header{padding:15px 14px 13px}nav{padding:9px 10px;gap:6px}nav button{font-size:12.5px}}
+
+/* Novo cabeçalho aprovado: empilhadeira vermelha, azul-marinho e detalhes vermelhos. */
+header.hero-header{position:relative;top:auto;z-index:3;min-height:228px;padding:0 18px;display:flex;align-items:center;overflow:hidden;border-radius:0 0 18px 18px;background:#071d32 url("hero-empilhadeira-vermelha.jpg") center right/cover no-repeat;box-shadow:0 4px 16px #071d3226}
+header.hero-header:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,25,46,.98) 0%,rgba(5,25,46,.91) 37%,rgba(5,25,46,.24) 72%,rgba(5,25,46,.04) 100%);pointer-events:none}
+header.hero-header .top{position:relative;z-index:1;width:100%;max-width:980px;margin:0 auto;display:block}
+.hero-copy{max-width:56%;padding:20px 0 18px}
+header.hero-header .hero-icon{display:inline-flex;width:42px;height:42px;align-items:center;justify-content:center;border:2px solid #fff;border-radius:10px;color:#fff;font-size:30px;font-weight:800;line-height:1;margin-bottom:9px}
+header.hero-header h1{font-size:clamp(23px,4.4vw,36px);line-height:1.08;letter-spacing:-.035em;color:#fff;font-weight:800;text-shadow:0 2px 8px #0005}
+header.hero-header .hero-rule{display:block;width:150px;height:6px;margin:13px 0 10px;border-radius:8px;background:#ef2935}
+header.hero-header p{font-size:clamp(11px,1.7vw,14px);line-height:1.35;color:#f0f4f8;margin:0;text-shadow:0 1px 5px #0008}
+nav{top:0;z-index:4}
+@media(max-width:560px){header.hero-header{min-height:190px;padding:0 14px;background-position:58% center}header.hero-header:after{background:linear-gradient(90deg,rgba(5,25,46,.98) 0%,rgba(5,25,46,.9) 45%,rgba(5,25,46,.32) 100%)}.hero-copy{max-width:68%;padding:16px 0}header.hero-header .hero-icon{width:34px;height:34px;font-size:24px;margin-bottom:7px}header.hero-header h1{font-size:24px}header.hero-header .hero-rule{width:112px;height:5px;margin:10px 0 8px}header.hero-header p{font-size:11px}}
+
 </style>
 </head>
 <body>
-<header><div class="top"><span style="font-size:25px">✓</span><div><h1>Checklist de Empilhadeira</h1><p>Inspeção visual diária · funcionamento offline</p></div></div></header>
+<header class="hero-header"><div class="top"><div class="hero-copy"><span class="hero-icon" aria-hidden="true">✓</span><h1>Checklist de Empilhadeiras</h1><span class="hero-rule"></span><p>Inspeção visual diária · funcionamento offline</p></div></div></header>
 <nav>
 <button class="active" data-tab="form">Nova inspeção</button>
 <button data-tab="history">Histórico</button>
@@ -137,7 +150,7 @@ canvas{display:block;margin:0 auto;max-width:680px;border-radius:4px;image-rende
     <p><b>Android:</b> abra no Chrome e escolha “Instalar aplicativo” ou “Adicionar à tela inicial”.</p>
     <p class="hint">Para instalação PWA e funcionamento offline, publique esta pasta em um endereço HTTPS. Depois de instalada e aberta uma vez, a interface e o modelo ficam disponíveis sem internet.</p>
     <h2 style="margin-top:18px">Sobre os dados</h2>
-    <p>O histórico usa o armazenamento local do navegador (IndexedDB/localStorage). Limpar os dados do navegador ou desinstalar pode apagar as inspeções. Use “Exportar backup” para guardar uma cópia JSON.</p>
+    <p>O histórico usa o armazenamento local do navegador (IndexedDB/localStorage). Limpar os dados do navegador ou desinstalar pode apagar as inspeções. Use “Exportar backup” para guardar uma cópia JSON dos dados das inspeções. As imagens PNG exportadas ficam guardadas neste aparelho, no próprio histórico.</p>
     <p class="hint">Este protótipo não envia dados para servidores e não substitui procedimentos internos de segurança da empresa.</p>
   </div>
 </section>
@@ -151,8 +164,8 @@ canvas{display:block;margin:0 auto;max-width:680px;border-radius:4px;image-rende
   </div>
   <div id="imageOutput" class="hidden">
    <img id="exportedImage" alt="Imagem exportada do checklist">
-   <p class="modal-note">A imagem está pronta. No iPhone, mantenha o dedo sobre ela e escolha <b>Salvar em Fotos</b>. No Android, mantenha pressionada e escolha <b>Baixar imagem</b> ou <b>Salvar imagem</b>.</p>
-   <div class="actions"><button class="primary" id="shareImage">Compartilhar imagem</button></div>
+   <p class="modal-note">Para guardar no aparelho, toque em <b>Baixar PNG</b>. No Android, o arquivo será salvo em Downloads; depois, abra-o e use a opção de salvar ou mover para a Galeria/Fotos, se disponível. No iPhone, o arquivo vai para Downloads no app Arquivos. Para enviar a imagem, use Compartilhar.</p>
+   <div class="actions"><button class="primary" id="downloadImage">Baixar PNG</button><button class="secondary" id="shareImage">Compartilhar imagem</button></div>
   </div>
   <div id="backupOutput" class="hidden">
    <textarea id="backupText" readonly></textarea>
@@ -187,8 +200,8 @@ let currentId=null;
 function selectHTML(v){return `<option value="C" ${v==="C"?"selected":""}>C</option><option value="NC" ${v==="NC"?"selected":""}>NC</option><option value="NA" ${v==="NA"?"selected":""}>NA</option>`}
 DIAGRAM.forEach((name,i)=>{let d=document.createElement("div");d.className="status-row";d.innerHTML=`<span>${name}</span><select data-d="${i}">${selectHTML(DDEFAULT[i])}</select>`;$("diagramStatuses").appendChild(d)});
 QUESTIONS.forEach((q,i)=>{let d=document.createElement("div");d.className="item";d.innerHTML=`<span class="q"><span class="num">${i+1}.</span>${q}</span><select data-q="${i}">${selectHTML(QDEFAULT[i])}</select>`;$("checkItems").appendChild(d)});
-function getData(){return {id:currentId||crypto.randomUUID(),operator:$("operator").value.trim(),date:$("date").value.trim(),shift:$("shift").value,equipment:$("equipment").value.trim(),hourmeter:$("hourmeter").value.trim(),diagram:[...document.querySelectorAll("[data-d]")].map(x=>x.value),items:[...document.querySelectorAll("[data-q]")].map(x=>x.value),observations:$("observations").value.trim(),updatedAt:new Date().toISOString()}}
-function setData(d){currentId=d.id||null;$("operator").value=d.operator||"";$("date").value=d.date||"";$("shift").value=d.shift||"";$("equipment").value=d.equipment||"";$("hourmeter").value=d.hourmeter||"";$("observations").value=d.observations||"";document.querySelectorAll("[data-d]").forEach((e,i)=>e.value=d.diagram?.[i]||"NA");document.querySelectorAll("[data-q]").forEach((e,i)=>e.value=d.items?.[i]||"NA");render()}
+function getData(){return {id:currentId||crypto.randomUUID(),operator:$("operator").value.trim(),date:$("date").value.trim(),shift:$("shift").value,equipment:$("equipment").value.trim(),hourmeter:$("hourmeter").value.trim().replace(/,/g,"."),diagram:[...document.querySelectorAll("[data-d]")].map(x=>x.value),items:[...document.querySelectorAll("[data-q]")].map(x=>x.value),observations:$("observations").value.trim(),updatedAt:new Date().toISOString()}}
+function setData(d){currentId=d.id||null;$("operator").value=d.operator||"";$("date").value=d.date||"";$("shift").value=d.shift||"";$("equipment").value=d.equipment||"";$("hourmeter").value=(d.hourmeter||"").replace(/,/g,".");$("observations").value=d.observations||"";document.querySelectorAll("[data-d]").forEach((e,i)=>e.value=d.diagram?.[i]||"NA");document.querySelectorAll("[data-q]").forEach((e,i)=>e.value=d.items?.[i]||"NA");render()}
 function statusColor(s){return s==="NC"?"#d51b2f":s==="NA"?"#087d43":"#1538bd"}
 function text(t,x,y,size,color="#1538bd",align="center",maxWidth=1000){
  ctx.save();
@@ -264,32 +277,73 @@ function render(){
 }
 function records(){try{return JSON.parse(localStorage.getItem("forklift_checklists")||"[]")}catch{return []}}
 function saveRecords(list){localStorage.setItem("forklift_checklists",JSON.stringify(list))}
-function save(){let d=getData();if(!d.date||!d.equipment){alert("Preencha pelo menos a data e o equipamento antes de salvar.");return}let all=records();let idx=all.findIndex(x=>x.id===d.id);if(idx>=0)all[idx]=d;else all.unshift(d);saveRecords(all);currentId=d.id;renderHistory();alert("Checklist salvo neste aparelho.")}
+function exportedImages(){try{return JSON.parse(localStorage.getItem("forklift_exported_images_meta")||"[]")}catch{return []}}
+function saveExportedImages(list){localStorage.setItem("forklift_exported_images_meta",JSON.stringify(list))}
+function openExportDB(){return new Promise((resolve,reject)=>{const req=indexedDB.open("forklift_exported_images",1);req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains("images"))req.result.createObjectStore("images",{keyPath:"id"})};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
+async function storeExportedImage(blob,id){const db=await openExportDB();await new Promise((resolve,reject)=>{const tx=db.transaction("images","readwrite");tx.objectStore("images").put({id,blob});tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error)});db.close()}
+async function readExportedImage(id){const db=await openExportDB();const result=await new Promise((resolve,reject)=>{const req=db.transaction("images","readonly").objectStore("images").get(id);req.onsuccess=()=>resolve(req.result?.blob||null);req.onerror=()=>reject(req.error)});db.close();return result}
+async function deleteExportedImage(id){const db=await openExportDB();await new Promise((resolve,reject)=>{const tx=db.transaction("images","readwrite");tx.objectStore("images").delete(id);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)});db.close();saveExportedImages(exportedImages().filter(x=>x.id!==id));renderHistory()}
+function save(){let d=getData();if(!d.date||!d.equipment){alert("Preencha pelo menos a data e o equipamento antes de salvar.");return}d.savedAt=new Date().toISOString();let all=records();let idx=all.findIndex(x=>x.id===d.id);if(idx>=0)all[idx]=d;else all.unshift(d);saveRecords(all);currentId=d.id;renderHistory();alert("Checklist salvo neste aparelho.")}
 function repeatPrevious(){
- const previous=records()[0];
- if(!previous){alert("Ainda não existe checklist salvo para repetir.");return}
+ // Procura tanto inspeções salvas quanto checklists vinculados a imagens exportadas.
+ // Exportar PNG já guarda checklistData no histórico, mesmo sem clicar em Salvar.
+ const saved=records().map(d=>({...d,_repeatDate:d.savedAt||""}));
+ const exported=exportedImages()
+  .filter(img=>img&&img.checklistData&&typeof img.checklistData==="object")
+  .map(img=>({...img.checklistData,_repeatDate:img.exportedAt||""}));
+ const candidates=[...saved,...exported].filter(d=>d&&Object.keys(d).length>1);
+ candidates.sort((a,b)=>new Date(b._repeatDate||0)-new Date(a._repeatDate||0));
+ const previous=candidates[0];
+ if(!previous){alert("Ainda não existe checklist salvo ou imagem exportada com dados para repetir.");return}
  if(!confirm("Criar uma nova inspeção copiando os dados e as marcações do último checklist? Você poderá editar tudo antes de salvar."))return;
- setData({...previous,id:null,date:new Date().toLocaleDateString("pt-BR").replaceAll("/","-"),hourmeter:""});
+ const copy={...previous};
+ delete copy._repeatDate;
+ delete copy.exportedAt;
+ setData({...copy,id:null,date:new Date().toLocaleDateString("pt-BR").replaceAll("/","-"),hourmeter:""});
  currentId=null;
  switchTab("form");
  alert("Checklist anterior copiado. Informe o horímetro inicial e edite o que for necessário.");
 }
-function renderHistory(){let all=records(),root=$("records");root.innerHTML="";if(!all.length){root.innerHTML='<div class="empty">Nenhuma inspeção salva ainda.</div>';return}all.forEach(d=>{let el=document.createElement("div");el.className="record";let title=document.createElement("strong");title.textContent=`${d.date||"Sem data"} · Equipamento ${d.equipment||"—"}`;let small=document.createElement("small");small.textContent=`${d.operator||"Sem operador"} · ${d.shift||"Sem turno"} · Horímetro ${d.hourmeter||"—"}`;let actions=document.createElement("div");actions.className="actions";let open=document.createElement("button");open.className="secondary";open.textContent="Abrir";open.onclick=()=>{setData(d);switchTab("form")};let png=document.createElement("button");png.className="primary";png.textContent="Exportar PNG";png.onclick=()=>{setData(d);exportPNG()};let del=document.createElement("button");del.className="danger";del.textContent="Excluir";del.onclick=()=>{if(confirm("Excluir esta inspeção do histórico?")){saveRecords(records().filter(x=>x.id!==d.id));renderHistory()}};actions.append(open,png,del);el.append(title,small,actions);root.appendChild(el)})}
+function renderHistory(){const inspections=records(),images=exportedImages(),root=$("records");root.innerHTML="";if(!inspections.length&&!images.length){root.innerHTML='<div class="empty">Nenhuma inspeção ou imagem exportada ainda.</div>';return}const entries=[...inspections.map(data=>({kind:"inspection",data})),...images.map(data=>({kind:"image",data}))];entries.sort((a,b)=>new Date(b.data.exportedAt||b.data.savedAt||0)-new Date(a.data.exportedAt||a.data.savedAt||0));entries.forEach(entry=>{const d=entry.data,el=document.createElement("div");el.className="record";const title=document.createElement("strong"),small=document.createElement("small"),actions=document.createElement("div");actions.className="actions";if(entry.kind==="image"){title.textContent=`Imagem exportada · ${d.date||"Sem data"} · Equipamento ${d.equipment||"—"}`;small.textContent=`${d.operator||"Sem operador"} · ${d.shift||"Sem turno"} · Horímetro ${d.hourmeter||"—"} · ${new Date(d.exportedAt).toLocaleString("pt-BR")}`;const view=document.createElement("button");view.className="primary";view.textContent="Ver imagem";view.onclick=()=>openSavedImage(d.id);actions.append(view);if(d.checklistData){const edit=document.createElement("button");edit.className="secondary";edit.textContent="Editar checklist";edit.onclick=()=>{setData(d.checklistData);switchTab("form")};actions.append(edit)}else{const note=document.createElement("small");note.textContent="Esta imagem foi exportada antes da função de edição. Para editar, será necessário refazer a inspeção.";note.style.display="block";note.style.width="100%";actions.append(note)}const del=document.createElement("button");del.className="danger";del.textContent="Excluir imagem";del.onclick=()=>{if(confirm("Excluir esta imagem exportada do histórico?"))deleteExportedImage(d.id).catch(()=>alert("Não foi possível excluir a imagem."))};actions.append(del)}else{title.textContent=`${d.date||"Sem data"} · Equipamento ${d.equipment||"—"}`;small.textContent=`${d.operator||"Sem operador"} · ${d.shift||"Sem turno"} · Horímetro ${d.hourmeter||"—"}`;const open=document.createElement("button");open.className="secondary";open.textContent="Abrir";open.onclick=()=>{setData(d);switchTab("form")};const png=document.createElement("button");png.className="primary";png.textContent="Exportar PNG";png.onclick=()=>{setData(d);exportPNG()};const del=document.createElement("button");del.className="danger";del.textContent="Excluir";del.onclick=()=>{if(confirm("Excluir esta inspeção do histórico?")){saveRecords(records().filter(x=>x.id!==d.id));renderHistory()}};actions.append(open,png,del)}el.append(title,small,actions);root.appendChild(el)})}
+async function openSavedImage(id){try{const blob=await readExportedImage(id);if(!blob){alert("O arquivo desta imagem não foi encontrado neste aparelho.");return}currentExportBlob=blob;const url=URL.createObjectURL(blob);$("exportedImage").src=url;showOutput("image")}catch{alert("Não foi possível abrir a imagem salva.")}}
 let currentExportBlob=null;
+function downloadPNG(){
+ if(!currentExportBlob){alert("Nenhuma imagem está pronta para baixar.");return}
+ const url=URL.createObjectURL(currentExportBlob);
+ const link=document.createElement("a");
+ const date=($("date").value||new Date().toLocaleDateString("pt-BR")).replace(/[^0-9-]/g,"-");
+ const equipment=($("equipment").value||"equipamento").replace(/[^a-zA-Z0-9_-]/g,"-");
+ link.href=url;
+ link.download=`checklist-${equipment}-${date}.png`;
+ link.style.display="none";
+ document.body.appendChild(link);
+ link.click();
+ link.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),2000);
+}
 function showOutput(kind){
  $("outputModal").classList.remove("hidden");
  $("imageOutput").classList.toggle("hidden",kind!=="image");
  $("backupOutput").classList.toggle("hidden",kind!=="backup");
  $("outputTitle").textContent=kind==="image"?"Imagem do checklist":"Backup dos checklists";
 }
-function exportPNG(){
+async function exportPNG(){
  render();
- canvas.toBlob(blob=>{
+ canvas.toBlob(async blob=>{
   if(!blob){alert("Falha ao gerar imagem.");return}
   currentExportBlob=blob;
   const url=URL.createObjectURL(blob);
   $("exportedImage").src=url;
   showOutput("image");
+  try{
+   const d=getData();
+   const id="img_"+Date.now()+"_"+Math.random().toString(36).slice(2,8);
+   await storeExportedImage(blob,id);
+   const meta=exportedImages();
+   meta.unshift({id,date:d.date||"",equipment:d.equipment||"",operator:d.operator||"",shift:d.shift||"",hourmeter:d.hourmeter||"",checklistData:{...d},exportedAt:new Date().toISOString()});
+   saveExportedImages(meta);
+   renderHistory();
+  }catch(err){console.error("Falha ao salvar PNG no histórico",err);alert("A imagem foi gerada, mas não foi possível salvá-la no histórico deste aparelho. Verifique o espaço disponível no navegador.")}
  },"image/png");
 }
 function switchTab(tab){document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));$("formView").classList.toggle("hidden",tab!=="form");$("historyView").classList.toggle("hidden",tab!=="history");$("helpView").classList.toggle("hidden",tab!=="help");if(tab==="history")renderHistory()}
@@ -301,10 +355,11 @@ $("importBtn").onclick=()=>$("backupFile").click();
 $("backupFile").onchange=async e=>{let f=e.target.files[0];if(!f)return;try{let incoming=JSON.parse(await f.text());if(!Array.isArray(incoming))throw 0;let merged=[...incoming,...records().filter(old=>!incoming.some(n=>n.id===old.id))];saveRecords(merged);renderHistory();alert("Backup importado.")}catch{alert("Arquivo de backup inválido.")}e.target.value=""};
 
 $("closeOutput").onclick=()=>{$("outputModal").classList.add("hidden");if($("exportedImage").src){URL.revokeObjectURL($("exportedImage").src);$("exportedImage").removeAttribute("src")}currentExportBlob=null};
+$("downloadImage").onclick=downloadPNG;
 $("shareImage").onclick=async()=>{if(!currentExportBlob)return;try{const file=new File([currentExportBlob],"checklist-empilhadeira.png",{type:"image/png"});if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:"Checklist de empilhadeira"});}else{alert("O compartilhamento direto não está disponível neste visualizador. Salve a imagem mantendo o dedo sobre ela.")}}catch(err){if(err.name!=="AbortError")alert("Não foi possível abrir o compartilhamento. Salve a imagem mantendo o dedo sobre ela.")}};
 $("copyBackup").onclick=async()=>{const t=$("backupText");t.focus();t.select();try{await navigator.clipboard.writeText(t.value);alert("Backup copiado.")}catch{alert("Selecione o texto e use Copiar no menu do aparelho.")}};
 
-document.addEventListener("input",e=>{if(e.target.matches("input,select,textarea"))render()});
+document.addEventListener("input",e=>{if(e.target.id==="hourmeter")e.target.value=e.target.value.replace(/,/g,".");if(e.target.matches("input,select,textarea"))render()});
 function setTodayIfEmpty(){if(!$("date").value)$("date").value=new Date().toLocaleDateString("pt-BR").replaceAll("/","-")}
 image.onload=()=>{setTodayIfEmpty();render()};setTodayIfEmpty();
 if("serviceWorker" in navigator && location.protocol.startsWith("http"))window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
